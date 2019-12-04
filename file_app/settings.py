@@ -25,6 +25,8 @@ SECRET_KEY = 'zan2nfis3p!pv%4o5m$zoglfxzlj8$ed6nr5v*_p+e*@zilmo^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 555242880
+
 ALLOWED_HOSTS = ['*']
 
 
