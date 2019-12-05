@@ -132,6 +132,7 @@ class FileView(APIView):
                                  'base64': encoded_string}
                             #print(len(m.get('base64')))
                     else:
+                        encoded_string = None
                         m = {'type': 'image',
                              'base64': 'None'}
                         print(m.get('base64'))
@@ -203,13 +204,13 @@ class FileView(APIView):
                                    (0, 255, 255),
                                    2, cv.LINE_AA)
                         out.write(frameFace)
-                        cv.imshow("Age Gender Demo", frameFace)
+                        # cv.imshow("Age Gender Demo", frameFace)
                         # cv.imwrite("age-gender-out.jpg", frameFace)
                     print("time : {:.3f}".format(time.time() - t))
                     # print(file_serializer.data)
 
                     with open("output.avi", "rb") as image_file:
                         encoded_string = base64.b64encode(image_file.read())
-                return Response(encoded_string)
+                return Response(image_file)
         else:
             return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
