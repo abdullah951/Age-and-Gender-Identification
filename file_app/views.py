@@ -199,7 +199,7 @@ class FileView(APIView):
                         print("Age : {}, conf = {:.3f}".format(age, agePreds[0].max()))
                         label = ""
                         if agePreds[0].max() > 0.7:
-                            label = "{},{},{},{}".format(gender, genderPreds[0].max(), age, agePreds[0].max())
+                            label = "{},{}".format(gender, age)
                         cv.putText(frameFace, label, (bbox[0], bbox[1] - 10), cv.FONT_HERSHEY_SIMPLEX, 0.8,
                                    (0, 255, 255),
                                    2, cv.LINE_AA)
@@ -211,6 +211,6 @@ class FileView(APIView):
 
                     with open("output.avi", "rb") as image_file:
                         encoded_string = base64.b64encode(image_file.read())
-                return Response(image_file)
+                return Response(encoded_string)
         else:
             return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
