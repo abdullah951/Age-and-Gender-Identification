@@ -67,7 +67,7 @@ class FileView(APIView):
                 ageList = ['(0-2)', '(4-6)', '(8-12)', '(15-20)', '(25-32)', '(38-43)', '(48-53)', '(60-100)']
                 genderList = ['Male', 'Female']
 
-                # Load network
+                # Load networks
                 ageNet = cv.dnn.readNet(ageModel, ageProto)
                 genderNet = cv.dnn.readNet(genderModel, genderProto)
                 faceNet = cv.dnn.readNet(faceModel, faceProto)
